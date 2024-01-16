@@ -46,7 +46,7 @@ loginBtn.addEventListener("click", () => {
       alertDiv.classList.remove("show");
     }, 3000);
   } else {
-    fetch(`${API_BASE_URL}/user/login`, {
+    fetch(`${API_BASE_URL}user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,6 +59,71 @@ loginBtn.addEventListener("click", () => {
       .then((response) => {
         return response.json();
       })
-      .then((data) => {});
+      .then((data) => {
+        if (data.error) {
+          alertDiv.innerHTML = data.error;
+          alertDiv.classList.add("show");
+          setTimeout(() => {
+            alertDiv.classList.remove("show");
+          }, 3000);
+        } else {
+          localStorage.setItem("userid", data.id);
+          window.location.href = "todopage.html?user=" + data.id;
+        }
+      });
+  }
+});
+
+//sign up Authentication
+registerBtn.addEventListener("click", () => {
+  const email = signUpEmail.value;
+  const password = signUpPassword.value;
+  const confirm = confirmPassword.value;
+  const usrname = username.value;
+  if (email === "" || password === "" || confirm === "" || usrname === "") {
+    alertDiv.innerHTML = "Please fill in all fields";
+    alertDiv.classList.add("show");
+    setTimeout(() => {
+      alertDiv.classList.remove("show");
+    }, 3000);
+  } else if (password !== confirm) {
+    alertDiv.innerHTML = "Passwords do not match";
+    alertDiv.classList.add("show");
+    setTimeout(() => {
+      alertDiv.classList.remove("show");
+    }, 3000);
+  } else {
+    fetch(`${API_BASE_URL}user/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: usrname,
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.error) {
+          alertDiv.innerHTML = data.error;
+          alertDiv.classList.add("show");
+          setTimeout(() => {
+            alertDiv.classList.remove("show");
+          }, 3000);
+        } else {
+          alertDiv.innerHTML =
+            "Account created successfully! Redirecting to todo page...";
+          alertDiv.classList.add("show");
+          setTimeout(() => {
+            alertDiv.classList.remove("show");
+            window.location.href = "todopage.html?user=" + data.id;
+          }, 3000);
+          localStorage.setItem("userid", data.id);
+        }
+      });
   }
 });
