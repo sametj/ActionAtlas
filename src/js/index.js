@@ -68,6 +68,7 @@ loginBtn.addEventListener("click", () => {
           }, 3000);
         } else {
           localStorage.setItem("userid", data.id);
+          localStorage.setItem("username", data.username);
           window.location.href = "todopage.html?user=" + data.id;
         }
       });
@@ -123,6 +124,7 @@ registerBtn.addEventListener("click", () => {
             window.location.href = "todopage.html?user=" + data.id;
           }, 3000);
           localStorage.setItem("userid", data.id);
+          localStorage.setItem("username", data.username);
         }
       });
   }

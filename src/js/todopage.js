@@ -13,6 +13,8 @@ const deleteButtons = document.querySelectorAll(".delete-button");
 const editButtons = document.querySelectorAll(".edit-button");
 const saveButtons = document.querySelectorAll(".save-button");
 const cancelButtons = document.querySelectorAll(".cancel-button");
+const displayUsername = document.querySelector("#user-name");
+const logOutBtn = document.querySelector(".logout-button");
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("user");
@@ -300,4 +302,6 @@ window.onload = () => {
     .then((data) => {
       getTodo(data);
     });
+
+  displayUsername.innerHTML = localStorage.getItem("username");
 };
