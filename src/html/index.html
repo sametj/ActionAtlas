@@ -1,0 +1,99 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/index.css" />
+    <title>ActionAtlas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <img src="/default-monochrome-white.svg" width="500px" height="300px" />
+
+    <div class="main-div">
+      <div class="alert-section"></div>
+      <section class="main-container">
+        <div class="welcome-div">
+          <h1>Welcome to ActionAtlas</h1>
+          <p>Organize your life with ActionAtlas</p>
+        </div>
+        <div class="auth-div">
+          <div class="login-div">
+            <h2>Login</h2>
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="user-email"
+            />
+
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              id="login-password-input"
+            />
+
+            <button
+              class="login-button"
+              type="submit"
+              id="account-login-button"
+            >
+              Login
+            </button>
+            <span>Don't have an account?</span>
+            <button class="signup-btn" type="button" id="create-account-button">
+              Sign Up
+            </button>
+          </div>
+
+          <div class="signup-div hide">
+            <h2>Sign Up</h2>
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              id="registration-username"
+            />
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="registration-email"
+            />
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              id="registration-password"
+            />
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              name="confirm-password"
+              placeholder="Confirm Password"
+              id="registration-confirm-password"
+            />
+            <button class="signup-btn" type="submit" id="register-button">
+              Sign Up
+            </button>
+            <span>Already have an account?</span>
+            <button class="login-btn" type="button" id="login-btn">
+              Login
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script type="module" src="/src/js/index.js"></script>
+</html>

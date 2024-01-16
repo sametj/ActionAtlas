@@ -1,5 +1,6 @@
-const API_BASE_URL = "http://localhost:3000/";
-const API_URL = API_BASE_URL + "todos/";
+import { API_URL } from "./APIURL.js";
+import { API_BASE_URL } from "./APIURL.js";
+
 const tasksList = document.querySelector(".tasks");
 const tags = document.querySelectorAll(".tag");
 const days = document.querySelectorAll(".day");
