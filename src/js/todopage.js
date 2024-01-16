@@ -20,6 +20,8 @@ const pendingTasks = document.querySelector("#pending-To-Do");
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("user");
+console.log(activeDay);
+
 //displaying date
 const date = new Date();
 const format = {
@@ -303,7 +305,7 @@ document.addEventListener("click", (e) => {
 
 //Displaying completed
 completedTasks.addEventListener("click", () => {
-  fetch(API_BASE_URL + `${userId}/todos/completed`, {
+  fetch(API_BASE_URL + `${userId}/todos/${activeDay}completed`, {
     method: "GET",
   })
     .then((response) => {
