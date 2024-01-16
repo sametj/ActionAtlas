@@ -15,6 +15,8 @@ const saveButtons = document.querySelectorAll(".save-button");
 const cancelButtons = document.querySelectorAll(".cancel-button");
 const displayUsername = document.querySelector("#user-name");
 const logOutBtn = document.querySelector(".logout-button");
+const completedTasks = document.querySelector("#completed-todos");
+const pendingTasks = document.querySelector("#pending-To-Do");
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("user");
@@ -45,6 +47,18 @@ const getTodo = (todo) => {
           <input type="checkbox" class="checkbox" ${
             element.completed === true ? "checked" : ""
           } />
+        </li>`;
+    tasksList.innerHTML = html;
+  });
+};
+
+const getTodoCompleted = (todo) => {
+  let html = "";
+  todo.forEach((element) => {
+    html += `  <li class="task" id ="${element.tag}">
+          <span class ="uniqueId">${element.id}</span>
+          <div class="task-div">${element.task} </div>
+          <input type="checkbox" class="checkbox" checked />
         </li>`;
     tasksList.innerHTML = html;
   });
@@ -285,7 +299,20 @@ document.addEventListener("click", (e) => {
         });
     }
   }
-  e;
+});
+
+//Displaying completed
+completedTasks.addEventListener("click", () => {
+  fetch(API_BASE_URL + `${userId}/todos/completed`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      tasksList.innerHTML = "";
+      getTodoCompleted(data);
+    });
 });
 
 window.onload = () => {
