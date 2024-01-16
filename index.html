@@ -1,0 +1,68 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ActionAtlas</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="main-container">
+      <h1>TO-DO LIST</h1>
+      <header class="task-type-header">
+        <label class="task-labels">Current To-Do</label>
+        <label class="task-labels">Completed</label>
+      </header>
+      <div class="alert-section"></div>
+      <div class="todo-main-container">
+        <div id="date"></div>
+        <div class="todo-container">
+          <aside class="aside-container">
+            <span class="day" id="monday">Monday</span>
+            <span class="day" id="tuesday">Tuesday</span>
+            <span class="day" id="wednesday">Wednesday</span>
+            <span class="day" id="thursday">Thursday</span>
+            <span class="day" id="friday">Friday</span>
+            <span class="day" id="saturday">Saturday</span>
+            <span class="day" id="sunday">Sunday</span>
+          </aside>
+          <section class="todo-lists">
+            <ol class="tasks"></ol>
+          </section>
+        </div>
+        <h1 id="add-task-header">Add Task</h1>
+        <div class="task-add-container" id="input-container">
+          <aside id="filter-aside">
+            <span class="tag" id="productivity"
+              ><i class="fa-solid fa-circle-check"></i> Productivity</span
+            >
+            <span class="tag" id="work"
+              ><i class="fa-solid fa-briefcase"></i> Work</span
+            >
+            <span class="tag" id="health"
+              ><i class="fa-solid fa-kit-medical"></i> Health</span
+            >
+            <span class="tag" id="habits"
+              ><i class="fa-solid fa-calendar-days"></i> Habits</span
+            >
+            <span class="tag" id="finance">
+              <i class="fa-solid fa-money-bills"></i> Finance</span
+            >
+          </aside>
+          <input type="text" class="task-input" />
+          <button class="add-button">Add</button>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/c9fa25c839.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/js/main.js"></script>
+</html>

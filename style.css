@@ -1,0 +1,309 @@
+:root {
+  --background-color: aliceblue;
+  --productivity-color: red;
+  --work-color: yellow;
+  --health-color: green;
+  --habits-color: blue;
+  --finance-color: orange;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", system-ui;
+}
+
+body {
+  background-color: darkslateblue;
+}
+span {
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  border: 3px solid;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+label {
+  padding: 10px;
+}
+.alert-section {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background-color: red;
+  margin: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+  display: none;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+#date {
+  font-size: 30px;
+  font-weight: bold;
+}
+.todo-main-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 50%;
+  background-color: antiquewhite;
+  margin: 40px;
+  padding: 40px;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+  align-items: center;
+  justify-content: center;
+}
+.task-labels {
+  font-size: 40px;
+  border: 2px solid black;
+  border-radius: 8px;
+  font-weight: bolder;
+  background-color: var(--background-color);
+  cursor: pointer;
+}
+.task-labels:hover {
+  box-shadow: 0 4px 10px black;
+}
+
+.todo-container {
+  display: inline-flex;
+  width: 90%;
+
+  background-color: antiquewhite;
+
+  padding: 40px;
+  gap: 15px;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px black;
+}
+aside {
+  align-self: flex-start;
+  flex-basis: 10%;
+}
+span {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bolder;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.task-div {
+  margin-right: 15px;
+  display: block;
+  width: 75%;
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+.aside-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 5px;
+  gap: 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.tag {
+  display: flex;
+  gap: 12px;
+  width: fit-content;
+}
+.aside-container > span {
+  color: black;
+  background-color: var(--background-color);
+}
+
+aside > span:hover {
+  box-shadow: 0 4px 10px black;
+  transform: scale(1.1);
+}
+.todo-lists {
+  border: 2px solid black;
+  height: 550px;
+
+  width: 100%;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  overflow-y: auto;
+  list-style: none;
+}
+
+#add-task-header {
+  width: 200px;
+}
+.task-add-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+.input-container {
+  width: 90%;
+}
+.task-input {
+  border: 2px solid black;
+  align-self: center;
+  height: 10%;
+  border-radius: 4px;
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.add-button {
+  border: 2px solid black;
+  align-self: center;
+  border-radius: 2px;
+  height: 60px;
+  width: fit-content;
+  font-size: 40px;
+  font-weight: bold;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  box-shadow: 0 12px 12px grey;
+}
+
+#filter-aside {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: 2px solid black;
+  border-radius: 5px;
+  gap: 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  font-size: 30px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#productivity {
+  background-color: var(--productivity-color);
+}
+#work {
+  background-color: var(--work-color);
+}
+#health {
+  background-color: var(--health-color);
+}
+#habits {
+  background-color: var(--habits-color);
+}
+#finance {
+  background-color: var(--finance-color);
+}
+.buttons-div {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+.buttons-div > button {
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  padding: 10px;
+}
+
+button:hover {
+  box-shadow: 0 4px 10px black;
+}
+
+.edit-button,
+.save-button {
+  background-color: green;
+  display: block;
+}
+.cancel-button,
+.delete-button {
+  background-color: red;
+}
+
+.save-button,
+.cancel-button {
+  display: none;
+}
+
+.checkbox {
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.active,
+.selected {
+  border: 5px solid green;
+  border-radius: 5px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.uniqueID {
+  display: none;
+}
+
+.edit-input {
+  height: 70%;
+  width: inherit;
+  font-size: 20px;
+  overflow-wrap: break-word;
+}
