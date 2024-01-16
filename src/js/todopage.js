@@ -14,6 +14,8 @@ const editButtons = document.querySelectorAll(".edit-button");
 const saveButtons = document.querySelectorAll(".save-button");
 const cancelButtons = document.querySelectorAll(".cancel-button");
 
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get("user");
 //displaying date
 const date = new Date();
 const format = {
@@ -54,7 +56,7 @@ days.forEach((day) => {
       day.classList.remove("active");
     });
     day.classList.add("active");
-    fetch(API_URL + `${day.id}`, {
+    fetch(API_BASE_URL + `${userId}/todos/${day.id}`, {
       method: "GET",
     })
       .then((response) => {
@@ -109,8 +111,8 @@ addTask.addEventListener("click", () => {
       alert.classList.remove("show");
     }, 3000);
     const tag = selectedTag.id;
-    fetch(API_URL + "addtask", {
-      method: "POST",
+    fetch(API_BASE_URL + `${userId}/addtodo`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -146,7 +148,7 @@ document.addEventListener("click", (e) => {
   const selectedDay = document.querySelector(".active").id;
   if (e.target.classList.contains("delete-button")) {
     const id = e.target.parentElement.parentElement.children[0].innerText;
-    fetch(API_URL + `delete/${id}`, {
+    fetch(API_BASE_URL + `${userId}/deletetodo/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -161,6 +163,7 @@ document.addEventListener("click", (e) => {
       .then(() => {
         alert.classList.add("show");
         alert.innerHTML = "Task deleted successfully";
+        alert.style.backgroundColor = "green";
         setTimeout(() => {
           alert.classList.remove("show");
         }, 3000);
@@ -209,7 +212,7 @@ document.addEventListener("click", (e) => {
 
     saveButton.addEventListener("click", () => {
       const newTask = taskInput.value;
-      fetch(API_URL + `edit/${id}`, {
+      fetch(API_BASE_URL + `${userId}/edittodo/${id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -221,6 +224,7 @@ document.addEventListener("click", (e) => {
       }).then(() => {
         alert.classList.add("show");
         alert.innerHTML = "Task updated successfully";
+        alert.style.backgroundColor = "green";
         setTimeout(() => {
           alert.classList.remove("show");
         }, 3000);
@@ -240,7 +244,7 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("checkbox")) {
     const id = e.target.parentElement.children[0].innerText;
     e.target.parentElement.classList.add("completed");
-    fetch(API_URL + `edit/${id}`, {
+    fetch(API_BASE_URL + `${userId}/edittodo/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -252,6 +256,7 @@ document.addEventListener("click", (e) => {
       if (e.target.checked) {
         alert.classList.add("show");
         alert.innerHTML = "Task completed successfully";
+        alert.style.backgroundColor = "green";
         setTimeout(() => {
           alert.classList.remove("show");
         }, 3000);
@@ -266,7 +271,7 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("tag")) {
     if (e.target.classList.contains("selected")) {
       const tag = e.target.id;
-      fetch(API_URL + `${selectedDay}/${tag}`, {
+      fetch(API_BASE_URL + `${userId}/todos/filter/${tag}`, {
         method: "GET",
       })
         .then((response) => {
@@ -286,7 +291,7 @@ window.onload = () => {
   const defaultDay = document.querySelector(`#${day}`);
   defaultDay.classList.add("active");
 
-  fetch(API_URL + day, {
+  fetch(API_BASE_URL + `${userId}/todos/${day}`, {
     method: "GET",
   })
     .then((response) => {
