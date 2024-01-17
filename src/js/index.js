@@ -1,6 +1,5 @@
 //imports
 import { API_BASE_URL } from "./APIURL.js";
-import { API_URL } from "./APIURL.js";
 
 //ALERTS
 const alertDiv = document.querySelector(".alert-section");

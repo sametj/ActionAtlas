@@ -1,4 +1,3 @@
-import { API_URL } from "./APIURL.js";
 import { API_BASE_URL } from "./APIURL.js";
 
 const tasksList = document.querySelector(".tasks");
