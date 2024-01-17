@@ -334,7 +334,7 @@ pendingTasks.addEventListener("click", () => {
 logOutBtn.addEventListener("click", () => {
   localStorage.removeItem("username");
   localStorage.removeItem("userid");
-  window.location.href = "/src/index.html";
+  window.location.href = "/index.html";
 });
 window.onload = () => {
   const day = today.split(",")[0].toLowerCase();
