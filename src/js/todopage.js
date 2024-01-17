@@ -42,10 +42,11 @@ const getTodo = (todo) => {
             <button class="save-button">Save</button>
             <button class="cancel-button">Cancel</button>
             <button class="delete-button">Delete</button>
+            <input type="checkbox" class="checkbox" ${
+              element.completed === true ? "checked" : ""
+            } />
           </div>
-          <input type="checkbox" class="checkbox" ${
-            element.completed === true ? "checked" : ""
-          } />
+         
         </li>`;
     tasksList.innerHTML = html;
   });
