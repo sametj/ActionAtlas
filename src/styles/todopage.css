@@ -376,3 +376,77 @@ button:hover {
 #user-name {
   justify-self: center;
 }
+
+@media screen and (max-width: 800px) {
+  html {
+    overflow-y: none;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: none;
+    width: 90%;
+  }
+  img {
+    width: 100px;
+  }
+
+  .welcome {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+  }
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    gap: 10px;
+  }
+
+  .task-type-header {
+    font-size: 20px;
+    gap: 10px;
+    width: 90%;
+  }
+  .main-container {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .todo-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: inherit;
+  }
+
+  .aside-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: inherit;
+  }
+
+  #filter-aside {
+    width: inherit;
+  }
+
+  .task-input {
+    width: 75%;
+    overflow-y: none;
+  }
+
+  .task {
+    width: 95%;
+    margin-right: 12px;
+  }
+}

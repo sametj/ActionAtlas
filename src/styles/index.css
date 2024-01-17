@@ -18,8 +18,9 @@ a {
 }
 
 img {
-  position: fixed;
+  position: relative;
   top: 0;
+  margin-bottom: 50px;
 }
 .main-div {
   display: flex;
@@ -142,4 +143,50 @@ p {
 
 .show {
   display: block;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 800px) {
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    position: relative;
+    width: 200px;
+    margin-bottom: 50px;
+  }
+
+  .main-container {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .welcome-div {
+    width: 100%;
+    height: 50%;
+    border-radius: 10px 10px 0 0;
+  }
+  .auth-div {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+  .login-div,
+  .signup-div {
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+  .main-div {
+    width: 100%;
+    height: 100%;
+  }
+  .alert-section {
+    width: 100%;
+    font-size: 15px;
+    margin-top: 40px;
+  }
 }

@@ -7,8 +7,6 @@ const days = document.querySelectorAll(".day");
 const addTask = document.querySelector(".add-button");
 const alert = document.querySelector(".alert-section");
 const dateElement = document.querySelector("#date");
-const activeDay = document.querySelector(".active");
-const activeTag = document.querySelector(".selected");
 const deleteButtons = document.querySelectorAll(".delete-button");
 const editButtons = document.querySelectorAll(".edit-button");
 const saveButtons = document.querySelectorAll(".save-button");
@@ -16,11 +14,10 @@ const cancelButtons = document.querySelectorAll(".cancel-button");
 const displayUsername = document.querySelector("#user-name");
 const logOutBtn = document.querySelector(".logout-button");
 const completedTasks = document.querySelector("#completed-todos");
-const pendingTasks = document.querySelector("#pending-To-Do");
+const pendingTasks = document.querySelector("#current-todos");
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("user");
-console.log(activeDay);
 
 //displaying date
 const date = new Date();
@@ -305,7 +302,8 @@ document.addEventListener("click", (e) => {
 
 //Displaying completed
 completedTasks.addEventListener("click", () => {
-  fetch(API_BASE_URL + `${userId}/todos/${activeDay}completed`, {
+  let activeDay = document.querySelector(".active").id;
+  fetch(API_BASE_URL + `${userId}/${activeDay}/completed`, {
     method: "GET",
   })
     .then((response) => {
@@ -317,6 +315,26 @@ completedTasks.addEventListener("click", () => {
     });
 });
 
+pendingTasks.addEventListener("click", () => {
+  let activeDay = document.querySelector(".active").id;
+  console.log(activeDay);
+  fetch(API_BASE_URL + `${userId}/${activeDay}/pending`, {
+    method: "GET",
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      tasksList.innerHTML = "";
+      getTodo(data);
+    });
+});
+
+logOutBtn.addEventListener("click", () => {
+  localStorage.removeItem("username");
+  localStorage.removeItem("userid");
+  window.location.href = "/src/html/index.html";
+});
 window.onload = () => {
   const day = today.split(",")[0].toLowerCase();
   const defaultDay = document.querySelector(`#${day}`);
@@ -331,6 +349,5 @@ window.onload = () => {
     .then((data) => {
       getTodo(data);
     });
-
   displayUsername.innerHTML = localStorage.getItem("username");
 };
