@@ -27,7 +27,6 @@ img {
   position: relative;
   justify-self: flex-start;
   height: 80px;
-  background-image: url(/default-icon-monochrome.svg);
 }
 
 .welcome {
