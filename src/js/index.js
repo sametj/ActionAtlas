@@ -94,9 +94,9 @@ registerBtn.addEventListener("click", () => {
     }, 3000);
   } else {
     fetch(`${API_BASE_URL}user/register`, {
+      mode: "no-cors",
       method: "POST",
       headers: {
-        "Access-Control-Allow-Origin": "https://action-atlas.vercel.app", // Required for CORS support to work
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
