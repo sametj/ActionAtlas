@@ -33,9 +33,8 @@ dateElement.innerHTML = today;
 const getTodo = (todo) => {
   let html = "";
   todo.forEach((element) => {
-    html += `  <li class="task" id ="${element.tag}">
-          <span class ="uniqueId">${element.id}</span>
-          <div class="task-div">${element.task} </div>
+    html += `  <li class="task ${element.tag}">
+          <div class="task-div" id="${element.id}">${element.task} </div>
           <div class="buttons-div">
             <button class="edit-button">Edit</button>
             <button class="save-button">Save</button>
@@ -54,9 +53,8 @@ const getTodo = (todo) => {
 const getTodoCompleted = (todo) => {
   let html = "";
   todo.forEach((element) => {
-    html += `  <li class="task" id ="${element.tag}">
-          <span class ="uniqueId">${element.id}</span>
-          <div class="task-div">${element.task} </div>
+    html += `  <li class="task ${element.tag}">
+          <div class="task-div" id="${element.id}">${element.task}</div>
           <input type="checkbox" class="checkbox" checked />
         </li>`;
     tasksList.innerHTML = html;
@@ -104,7 +102,6 @@ addTask.addEventListener("click", () => {
   const selectedDay = document.querySelector(".active").id;
   const selectedTag = document.querySelector(".selected");
   const task = taskText.value;
-
   if (task == "") {
     alert.innerHTML = "Please enter a task";
     alert.classList.add("show");
@@ -125,7 +122,7 @@ addTask.addEventListener("click", () => {
     setTimeout(() => {
       alert.classList.remove("show");
     }, 3000);
-    const tag = selectedTag.id;
+    const tag = selectedTag.classList[1];
     fetch(API_BASE_URL + `${userId}/addtodo`, {
       method: "PUT",
       headers: {
@@ -142,9 +139,8 @@ addTask.addEventListener("click", () => {
         return response.json();
       })
       .then((data) => {
-        const html = `  <li class="task" id ="${tag}">
-          <span class ="uniqueId">${data.id}</span>
-          <div class="task-div">${task} </div>
+        const html = `  <li class="task ${tag}">
+          <div class="task-div" id="${data.id}">${task} </div>
           <div class="buttons-div">
             <button class="edit-button">Edit</button>
             <button class="save-button">Save</button>
@@ -162,7 +158,8 @@ addTask.addEventListener("click", () => {
 document.addEventListener("click", (e) => {
   const selectedDay = document.querySelector(".active").id;
   if (e.target.classList.contains("delete-button")) {
-    const id = e.target.parentElement.parentElement.children[0].innerText;
+    const id = e.target.parentElement.parentElement.children[0].id;
+    console.log(id);
     fetch(API_BASE_URL + `${userId}/deletetodo/${id}`, {
       method: "DELETE",
       headers: {
@@ -190,14 +187,20 @@ document.addEventListener("click", (e) => {
 //Editing task
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("edit-button")) {
-    const id = e.target.parentElement.parentElement.children[0].innerText;
+    const id = e.target.parentElement.parentElement.children[0].id;
 
     //Getting Buttons and checkbox
     const deleteButton = e.target.parentElement.children[3];
     const editButton = e.target.parentElement.children[0];
     const saveButton = e.target.parentElement.children[1];
     const cancelButton = e.target.parentElement.children[2];
-    const checkbox = e.target.parentElement.parentElement.children[3];
+    const checkbox = e.target.parentElement.children[4];
+
+    console.log(deleteButton);
+    console.log(editButton);
+    console.log(saveButton);
+    console.log(cancelButton);
+    console.log(checkbox);
 
     //hiding buttons
     deleteButton.style.display = "none";
@@ -207,7 +210,8 @@ document.addEventListener("click", (e) => {
     checkbox.classList.add("hide");
 
     //Getting task
-    const task = e.target.parentElement.parentElement.children[1];
+    const task = e.target.parentElement.parentElement.children[0];
+
     const taskText = task.innerText;
     const taskInput = document.createElement("input");
     taskInput.classList.add("edit-input");
@@ -257,7 +261,7 @@ document.addEventListener("click", (e) => {
 //Completing task
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("checkbox")) {
-    const id = e.target.parentElement.children[0].innerText;
+    const id = e.target.parentElement.parentElement.children[0].id;
     e.target.parentElement.classList.add("completed");
     fetch(API_BASE_URL + `${userId}/edittodo/${id}`, {
       method: "PUT",
@@ -282,10 +286,9 @@ document.addEventListener("click", (e) => {
 
 //Filtering tasks by tag
 document.addEventListener("click", (e) => {
-  const selectedDay = document.querySelector(".active").id;
   if (e.target.classList.contains("tag")) {
     if (e.target.classList.contains("selected")) {
-      const tag = e.target.id;
+      const tag = e.target.classList[1];
       fetch(API_BASE_URL + `${userId}/todos/filter/${tag}`, {
         method: "GET",
       })
@@ -317,7 +320,6 @@ completedTasks.addEventListener("click", () => {
 
 pendingTasks.addEventListener("click", () => {
   let activeDay = document.querySelector(".active").id;
-  console.log(activeDay);
   fetch(API_BASE_URL + `${userId}/${activeDay}/pending`, {
     method: "GET",
   })
@@ -339,7 +341,6 @@ window.onload = () => {
   const day = today.split(",")[0].toLowerCase();
   const defaultDay = document.querySelector(`#${day}`);
   defaultDay.classList.add("active");
-
   fetch(API_BASE_URL + `${userId}/todos/${day}`, {
     method: "GET",
   })

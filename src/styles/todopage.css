@@ -287,19 +287,19 @@ ol {
   cursor: pointer;
 }
 
-#productivity {
+.productivity {
   background-color: var(--productivity-color);
 }
-#work {
+.work {
   background-color: var(--work-color);
 }
-#health {
+.health {
   background-color: var(--health-color);
 }
-#habits {
+.habits {
   background-color: var(--habits-color);
 }
-#finance {
+.finance {
   background-color: var(--finance-color);
 }
 .buttons-div {
