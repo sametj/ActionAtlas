@@ -1,3 +1,3 @@
-const API_BASE_URL = "https://action-atlas-api.vercel.app/";
+const API_BASE_URL = "http://localhost:3000/";
 
 export { API_BASE_URL };

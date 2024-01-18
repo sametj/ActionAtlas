@@ -94,7 +94,6 @@ registerBtn.addEventListener("click", () => {
     }, 3000);
   } else {
     fetch(`${API_BASE_URL}user/register`, {
-      mode: "no-cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -116,15 +115,15 @@ registerBtn.addEventListener("click", () => {
             alertDiv.classList.remove("show");
           }, 3000);
         } else {
+          localStorage.setItem("userid", data.user.id);
+          localStorage.setItem("username", data.user.username);
           alertDiv.innerHTML =
             "Account created successfully! Redirecting to todo page...";
           alertDiv.classList.add("show");
           setTimeout(() => {
             alertDiv.classList.remove("show");
-            window.location.href = "todopage.html?user=" + data.id;
+            window.location.href = "todopage.html?user=" + data.user.id;
           }, 3000);
-          localStorage.setItem("userid", data.id);
-          localStorage.setItem("username", data.username);
         }
       });
   }
