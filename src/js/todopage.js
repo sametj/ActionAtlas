@@ -286,10 +286,11 @@ document.addEventListener("click", (e) => {
 
 //Filtering tasks by tag
 document.addEventListener("click", (e) => {
+  const selectedDay = document.querySelector(".active").id;
   if (e.target.classList.contains("tag")) {
     if (e.target.classList.contains("selected")) {
       const tag = e.target.classList[1];
-      fetch(API_BASE_URL + `${userId}/todos/filter/${tag}`, {
+      fetch(API_BASE_URL + `${userId}/todos/${selectedDay}/${tag}`, {
         method: "GET",
       })
         .then((response) => {
