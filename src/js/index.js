@@ -94,7 +94,6 @@ registerBtn.addEventListener("click", () => {
     }, 3000);
   } else {
     fetch(`${API_BASE_URL}user/register`, {
-      mode: "cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
