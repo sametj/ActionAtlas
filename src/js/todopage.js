@@ -373,6 +373,7 @@ function updateCarousel() {
       if (index === currentIndex) {
         day.classList.add("active");
         window.location.href = `#${day.id}`;
+        tasksList.innerHTML = "";
         fetch(API_BASE_URL + `${userId}/todos/${day.id}`, {
           method: "GET",
         })
