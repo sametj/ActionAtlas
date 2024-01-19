@@ -372,6 +372,7 @@ function updateCarousel() {
     days.forEach((day, index) => {
       if (index === currentIndex) {
         day.classList.add("active");
+        window.location.href = `#${day.id}`;
       }
       if (index !== currentIndex) {
         day.classList.remove("active");
