@@ -162,8 +162,6 @@ aside {
   flex-basis: 10%;
 }
 span {
-  display: flex;
-  flex-wrap: wrap;
   padding: 10px;
   font-size: 20px;
   text-align: center;
@@ -404,8 +402,6 @@ button:hover {
 }
 
 #user-name {
-  border: 0;
-  font-size: 20px;
   justify-self: center;
 }
 
@@ -429,7 +425,6 @@ button:hover {
   .welcome {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: inherit;
@@ -508,6 +503,11 @@ button:hover {
   }
   .tasks {
     overflow-x: hidden;
+  }
+
+  #user-name {
+    font-size: 14px;
+    justify-self: center;
   }
 }
 
