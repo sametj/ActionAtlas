@@ -404,6 +404,8 @@ button:hover {
 }
 
 #user-name {
+  border: 0;
+  font-size: 20px;
   justify-self: center;
 }
 
