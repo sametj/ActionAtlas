@@ -402,6 +402,7 @@ button:hover {
 }
 
 #user-name {
+  border: 0;
   justify-self: center;
 }
 
