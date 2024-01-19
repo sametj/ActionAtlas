@@ -372,6 +372,7 @@ function updateCarousel() {
     days.forEach((day, index) => {
       if (index === currentIndex) {
         day.classList.add("active");
+        window.location.href = `#${day.id}`;
         fetch(API_BASE_URL + `${userId}/todos/${day.id}`, {
           method: "GET",
         })
@@ -382,7 +383,6 @@ function updateCarousel() {
             getTodo(data);
             window.location.href = `#${day.id}`;
           });
-        window.location.href = `#${day.id}`;
       }
       if (index !== currentIndex) {
         day.classList.remove("active");
