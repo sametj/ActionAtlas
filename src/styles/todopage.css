@@ -336,6 +336,34 @@ button:hover {
   display: none;
 }
 
+.prev-button{
+  left: 0;
+  top: 50%;
+ 
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  padding: 10px;
+  background-color: green;
+
+}
+.next-button{
+  right: 0;
+  top: 50%;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+  cursor: pointer;
+  padding: 10px;
+  background-color: green;
+
+}
+
 .checkbox {
   width: 50px;
   height: 50px;
@@ -408,6 +436,7 @@ button:hover {
     font-size: 20px;
     gap: 10px;
   }
+  
 
   .task-type-header {
     font-size: 20px;
@@ -434,7 +463,7 @@ button:hover {
   .aside-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: 0;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -465,3 +494,5 @@ button:hover {
     overflow-x: hidden;
   }
 }
+
+/* This should match the width of the carousel-item-c

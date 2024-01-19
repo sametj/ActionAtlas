@@ -14,6 +14,9 @@ const displayUsername = document.querySelector("#user-name");
 const logOutBtn = document.querySelector(".logout-button");
 const completedTasks = document.querySelector("#completed-todos");
 const pendingTasks = document.querySelector("#current-todos");
+const asideContainer = document.querySelector(".aside-container");
+const nextButton = document.querySelector(".next-button");
+const prevButton = document.querySelector(".prev-button");
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("user");
@@ -353,3 +356,52 @@ window.onload = () => {
     });
   displayUsername.innerHTML = localStorage.getItem("username");
 };
+
+let currentIndex = 0;
+const totalItems = days.length;
+
+function updateCarousel() {
+  if (window.innerWidth < 800) {
+    nextButton.classList.remove("hide");
+    prevButton.classList.remove("hide");
+    days.forEach((day, index) => {
+      if (index === currentIndex) {
+        day.classList.add("active");
+        day.classList.remove("hide");
+      } else {
+        day.classList.remove("active");
+        day.classList.add("hide");
+      }
+    });
+  } else {
+    return;
+  }
+}
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchMove(e) {
+  touchEndX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd() {
+  if (touchEndX < touchStartX) {
+    currentIndex = currentIndex < totalItems - 1 ? currentIndex + 1 : 0;
+    updateCarousel();
+  }
+
+  if (touchEndX > touchStartX) {
+    currentIndex = currentIndex > 0 ? currentIndex - 1 : totalItems - 1;
+    console.log("swipe right");
+    updateCarousel();
+  }
+}
+
+asideContainer.addEventListener("touchstart", handleTouchStart, false);
+asideContainer.addEventListener("touchmove", handleTouchMove, false);
+asideContainer.addEventListener("touchend", handleTouchEnd, false);
