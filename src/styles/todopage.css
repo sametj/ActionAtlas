@@ -162,6 +162,8 @@ aside {
   flex-basis: 10%;
 }
 span {
+  display: flex;
+  flex-wrap: wrap;
   padding: 10px;
   font-size: 20px;
   text-align: center;
