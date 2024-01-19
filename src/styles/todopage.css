@@ -337,9 +337,9 @@ button:hover {
 }
 
 .prev-button{
+  display: none;
   left: 0;
   top: 50%;
- 
   border: 2px solid black;
   border-radius: 5px;
   color: white;
@@ -351,6 +351,7 @@ button:hover {
 
 }
 .next-button{
+  display: none;
   right: 0;
   top: 50%;
   border: 2px solid black;
@@ -430,6 +431,14 @@ button:hover {
     width: inherit;
   }
 
+  .day{
+    display: none;
+  }
+
+  .day.active{
+    display: block;
+  }
+
   h1 {
     display: flex;
     flex-direction: column;
@@ -472,6 +481,9 @@ button:hover {
 
   #filter-aside {
     width: inherit;
+  }
+  .next-button, .prev-button{
+    display: block;
   }
 
   .task-input {
