@@ -337,9 +337,9 @@ button:hover {
 }
 
 .prev-button {
+  display: none;
   left: 0;
   top: 50%;
-
   border: 2px solid black;
   border-radius: 5px;
   color: white;
@@ -350,6 +350,7 @@ button:hover {
   background-color: green;
 }
 .next-button {
+  display: none;
   right: 0;
   top: 50%;
   border: 2px solid black;
@@ -399,6 +400,7 @@ button:hover {
 }
 
 #user-name {
+  border: 0;
   justify-self: center;
 }
 
@@ -423,10 +425,17 @@ button:hover {
   .welcome {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: inherit;
+  }
+
+  .day {
+    display: none;
+  }
+
+  .day.active {
+    display: block;
   }
 
   h1 {
@@ -475,6 +484,10 @@ button:hover {
 
   #filter-aside {
     width: inherit;
+  }
+  .next-button,
+  .prev-button {
+    display: block;
   }
 
   .task-input {
