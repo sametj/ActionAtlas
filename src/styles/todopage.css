@@ -336,10 +336,10 @@ button:hover {
   display: none;
 }
 
-.prev-button{
+.prev-button {
   left: 0;
   top: 50%;
- 
+
   border: 2px solid black;
   border-radius: 5px;
   color: white;
@@ -348,9 +348,8 @@ button:hover {
   cursor: pointer;
   padding: 10px;
   background-color: green;
-
 }
-.next-button{
+.next-button {
   right: 0;
   top: 50%;
   border: 2px solid black;
@@ -361,7 +360,6 @@ button:hover {
   cursor: pointer;
   padding: 10px;
   background-color: green;
-
 }
 
 .checkbox {
@@ -409,6 +407,7 @@ button:hover {
   body {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    z-index: 0;
   }
   body {
     display: flex;
@@ -436,7 +435,10 @@ button:hover {
     font-size: 20px;
     gap: 10px;
   }
-  
+
+  .task-labels {
+    font-size: 12px;
+  }
 
   .task-type-header {
     font-size: 20px;
@@ -457,8 +459,9 @@ button:hover {
   }
 
   #date {
-    font-size: 20px;
-    letter-spacing: 1px;
+    font-size: 8px;
+
+    gap: 10px;
   }
   .aside-container {
     display: flex;
@@ -493,6 +496,13 @@ button:hover {
   .tasks {
     overflow-x: hidden;
   }
-}
 
-/* This should match the width of the carousel-item-c
+  .alert-section {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    width: 100%;
+    font-size: 15px;
+    word-wrap: break-word;
+  }
+}
