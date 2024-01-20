@@ -514,7 +514,7 @@ button:hover {
     position: fixed;
     z-index: 2;
     top: 0;
-    width: 100%;
+    width: 95%;
     font-size: 15px;
     word-wrap: break-word;
   }
